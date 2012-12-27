@@ -1,0 +1,42 @@
+todo :
+
+
+   ResEvalMessage         evalMessage        ( 1: AuthSignature sig, 2: ReqEvalMessage  req ),
+   // SNS only : 1) Add a comment to a message
+   ResCommentMessage      commentMessage     ( 1: AuthSignature sig, 2: ReqCommentMessage  req ),
+
+   
+   struct ReqAuthenticateUser {
+   3: VersionNumber clientVersion
+      
+   
+   struct ContextMessage {
+   3: VoteCount    commentCount,
+   4: VoteCount    likeCount,
+   5: VoteCount    hateCount
+}
+   
+   
+   
+   
+   
+# m(essage): column family for the content of the "M"essage
+#    column qualifier : l(ike)
+#    value : the number of votes that users "L"iked  
+#    column qualifier : d(islike)
+#    value : the number of votes that users "D"isliked
+#    column qualifier : c(comment count)
+#    value : the number of comments to the message.  
+#
+# l(ikers) : column family for the list of users who liked a message
+#    column qualifier : UserId of the user who liked the message
+#    value : the long timestamp(System.currentTimeMillis() in server) that the user liked it.
+#
+# d(islikers) : column family for the list of users who disliked a message
+#    column qualifier : UserId of the user who disliked the message
+#    value : the long timestamp(System.currentTimeMillis() in server) that the user disliked it.
+#
+# r(reply): column family for list of "R"eplies to the message. (Used by SNS case only)
+#    column qualifier : long timestamp(System.currentTimeMillis() in server) - the time when the reply was received by the Thrift server.
+#    value : the content of the reply message
+   

@@ -1,4 +1,4 @@
-REST service server of NLESP
+Tests for REST service server of NLESP
 =====
 
 This folder contains tests for REST service of NLESP.

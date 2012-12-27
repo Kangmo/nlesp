@@ -1,0 +1,113 @@
+Running basic unit test.
+[==========] Running 15 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 15 tests from LocalPlayerTest
+[ RUN      ] LocalPlayerTest.CreateProfile
+Error [code:17] A user with the given email already exists
+../src/LocalPlayerTest.cpp:289: Failure
+Value of: isPassed()
+  Actual: false
+Expected: true
+[  FAILED  ] LocalPlayerTest.CreateProfile (577 ms)
+[ RUN      ] LocalPlayerTest.CreateTestUsers
+Error [code:17] A user with the given email already exists
+../src/LocalPlayerTest.cpp:308: Failure
+Value of: isPassed()
+  Actual: false
+Expected: true
+[  FAILED  ] LocalPlayerTest.CreateTestUsers (23 ms)
+[ RUN      ] LocalPlayerTest.Authentication_With_Invalid_ID
+Error [code:5] Invalid email.
+[       OK ] LocalPlayerTest.Authentication_With_Invalid_ID (37 ms)
+[ RUN      ] LocalPlayerTest.Authentication_With_Wrong_Password
+Error [code:5] Invalid password.
+[       OK ] LocalPlayerTest.Authentication_With_Wrong_Password (28 ms)
+[ RUN      ] LocalPlayerTest.Authentication
+[       OK ] LocalPlayerTest.Authentication (54 ms)
+[ RUN      ] LocalPlayerTest.CreateProfile_With_Empty_Email
+Error [code:17] Empty email on a user profile
+[       OK ] LocalPlayerTest.CreateProfile_With_Empty_Email (18 ms)
+[ RUN      ] LocalPlayerTest.CreateProfile_With_Empty_Password
+Error [code:17] Empty password on a user profile
+[       OK ] LocalPlayerTest.CreateProfile_With_Empty_Password (18 ms)
+[ RUN      ] LocalPlayerTest.UpdateProfile
+[       OK ] LocalPlayerTest.UpdateProfile (133 ms)
+[ RUN      ] LocalPlayerTest.UpdateProfile_With_Empty_ID
+Error [code:17] Empty user identifier on a user profile to update.
+[       OK ] LocalPlayerTest.UpdateProfile_With_Empty_ID (44 ms)
+[ RUN      ] LocalPlayerTest.UpdateProfile_With_Empty_Email
+Error [code:17] Empty email on a user profile
+[       OK ] LocalPlayerTest.UpdateProfile_With_Empty_Email (44 ms)
+[ RUN      ] LocalPlayerTest.Friendship
+[DEBUG] Received Message Id : 1, Type : 1
+VicKitUnitTest: ../src/VKInternal.cpp:71: void handleContextInvitation(VicKit::ContextMessage&): Assertion `0' failed.
+./runTest.sh: line 7:  9579 Aborted                 (core dumped) ./Active/VicKitUnitTest
+Running scenario 1A.
+[A] Initializing System. 
+[A] Authenticate User test01@thankyousoft.com
+Running scenario 1B.
+[B] Initializing System.
+[B] Authenticate User test02@thankyousoft.com
+[A] wait for invitation from B
+[B] sleep a second to insure the A started and is waiting.
+[DEBUG] Received Message Id : 1, Type : 4
+[DEBUG] Done.[B] search user profile of A.
+[DEBUG] Received Message Id : 1, Type : 1
+[ChatScenario1A::onInvite] called.
+[ChatScenario1A::onMatchForInvite] called.
+[DEBUG] Received Message Id : 2, Type : 4
+[ChatScenario1A::onReceiveData] called. data : Hello
+[DEBUG] Done.[A] wait for message from B
+[B] create(find) a match against A.
+[ChatScenario1B::onFindMatch] called. matchId = 4611686018427387900
+[B] wait for 1 second for A to join the match.
+[DEBUG] Received Message Id : 3, Type : 1
+[ChatScenario1A::onInvite] called.
+[ChatScenario1A::onMatchForInvite] called.
+[DEBUG] Done.[A] search profile of B
+[A] check message from B
+[A] send message to B
+[A] destroy the VicKitSystem.
+[B] send data to A.
+[B] wait for a reply message from A.
+[DEBUG] Received Message Id : 2, Type : 4
+[ChatScenario1B::onReceiveData] called. data : Chat
+[DEBUG] Done.[B] check reply message from A.
+[B] destroy the VicKitSystem.
+[B] Quit.
+[A] Quit.
+Running scenario 2A.
+Running scenario 2B.
+[B] Wait a second to allow A send a message.
+[A] Initializing System.
+[A] Authenticate User test03@thankyousoft.com
+[A] search user profile of B.
+[A] make match against B.
+[ChatScenario2A::onFindMatch] called. matchId = 4611686018427387899
+[A] send a message "Hello" to B, who is offline.
+[A] destroy the VicKitSystem.
+[B] Initializing System.
+[B] Authenticate User test04@thankyousoft.com
+[A] quit.
+[B] search user profile of A
+[B] wait until an invitation from A comes
+[DEBUG] Received Message Id : 1, Type : 1
+[ChatScenario2B::onInvite] called.
+[ChatScenario2B::onMatchForInvite] called.
+[DEBUG] Received Message Id : 2, Type : 4
+[B] check match peer and data
+[ChatScenario2B::onReceiveData] called. data : Hello
+Received message Hello
+[DEBUG] Received Message Id : 3, Type : 1
+[ChatScenario2B::onInvite] called.
+[ChatScenario2B::onMatchForInvite] called.
+[DEBUG] Received Message Id : 4, Type : 4
+../src/ChatScenario2.cpp:175: Failure
+Value of: lastSenderID.compare( searchedUserProfile_.uid ) == 0
+  Actual: false
+Expected: true
+[ChatScenario2B::onReceiveData] called. data : Hello
+Received message Hello
+[DEBUG] Done.[B] destroy the VicKitSystem.
+[B] quit.
+

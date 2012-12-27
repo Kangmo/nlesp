@@ -1,0 +1,102 @@
+[==========] Running 15 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 15 tests from LocalPlayerTest
+[ RUN      ] LocalPlayerTest.CreateProfile
+Created UID: 2[       OK ] LocalPlayerTest.CreateProfile (2705 ms)
+[ RUN      ] LocalPlayerTest.CreateTestUsers
+Created UID: 3Created UID: 4Created UID: 5[       OK ] LocalPlayerTest.CreateTestUsers (1232 ms)
+[ RUN      ] LocalPlayerTest.Authentication_With_Invalid_ID
+Error [code:[       OK ] LocalPlayerTest.Authentication_With_Invalid_ID5] Invalid email.
+ (72 ms)
+[ RUN      ] LocalPlayerTest.Authentication_With_Wrong_Password
+Error [code:5] Invalid password.
+[       OK ] LocalPlayerTest.Authentication_With_Wrong_Password (170 ms)
+[ RUN      ] LocalPlayerTest.Authentication
+[       OK ] LocalPlayerTest.Authentication (204 ms)
+[ RUN      ] LocalPlayerTest.CreateProfile_With_Empty_Email
+Error [code:17] Empty email on a user profile
+[       OK ] LocalPlayerTest.CreateProfile_With_Empty_Email (1 ms)
+[ RUN      ] LocalPlayerTest.CreateProfile_With_Empty_Password
+Error [code:17] Empty password on a user profile
+[       OK ] LocalPlayerTest.CreateProfile_With_Empty_Password (10 ms)
+[ RUN      ] LocalPlayerTest.UpdateProfile
+[       OK ] LocalPlayerTest.UpdateProfile (621 ms)
+[ RUN      ] LocalPlayerTest.UpdateProfile_With_Empty_ID
+Error [code:17] Empty user identifier  on a user profile to update
+[       OK ] LocalPlayerTest.UpdateProfile_With_Empty_ID (326 ms)
+[ RUN      ] LocalPlayerTest.UpdateProfile_With_Empty_Email
+Error [code:17] Empty email on a user profile
+[       OK ] LocalPlayerTest.UpdateProfile_With_Empty_Email (256 ms)
+[ RUN      ] LocalPlayerTest.Friendship
+Created UID: 6Created UID: 7[       OK ] LocalPlayerTest.Friendship (2493 ms)
+[ RUN      ] LocalPlayerTest.RequestFriend_To_Not_Existing_Player
+Error [code:17] User not found with the given user identifier : 999999999
+[       OK ] LocalPlayerTest.RequestFriend_To_Not_Existing_Player (750 ms)
+[ RUN      ] LocalPlayerTest.RequestFriend_To_Myself
+Error [code:17] The friend identifier is same to the requester : 2
+[       OK ] LocalPlayerTest.RequestFriend_To_Myself (268 ms)
+[ RUN      ] LocalPlayerTest.CancelFriend_With_Stranger
+Error [code:17] User not found with the given user identifier : 999999999
+[       OK ] LocalPlayerTest.CancelFriend_With_Stranger (272 ms)
+[ RUN      ] LocalPlayerTest.SearchUser
+[       OK ] LocalPlayerTest.SearchUser (768 ms)
+[----------] 15 tests from LocalPlayerTest (10150 ms total)
+
+[----------] Global test environment tear-down
+[==========] 15 tests from 1 test case ran. (10150 ms total)
+[  PASSED  ] 15 tests.
+Running scenario 1A.
+[A] Initializing System. 
+Running scenario 1B.
+[A] Authenticate User test01@thankyousoft.com
+[B] Initializing System.
+[B] Authenticate User test02@thankyousoft.com
+[B] sleep a second to insure the A started and is waiting.
+[A] wait for invitation from B
+[B] search user profile of A.
+[B] create(find) a match against A.
+[ChatScenario1B::onFindMatch] called. matchId = -2
+[B] wait for 1 second for A to join the match.
+[DEBUG] Received Message Id : 1, Type : 1
+[ChatScenario1A::onInvite] called.
+[ChatScenario1A::onMatchForInvite] called.
+[DEBUG] Done.[A] wait for message from B
+[B] send data to A.
+[B] wait for a reply message from A.
+[DEBUG] Received Message Id : 2, Type : 4
+[ChatScenario1A::onReceiveData] called. data : Hello
+[DEBUG] Done.[A] search profile of B
+[A] check message from B
+[A] send message to B
+[A] destroy the VicKitSystem.
+[DEBUG] Received Message Id : 1, Type : 4
+[ChatScenario1B::onReceiveData] called. data : Chat
+[DEBUG] Done.[B] check reply message from A.
+[B] destroy the VicKitSystem.
+[A] Quit.
+[B] Quit.
+Running scenario 2B.
+Running scenario 2A.
+[A] Initializing System.
+[B] Wait a second to allow A send a message.
+[A] Authenticate User test03@thankyousoft.com
+[A] search user profile of B.
+[A] make match against B.
+[ChatScenario2A::onFindMatch] called. matchId = -3
+[A] send a message "Hello" to B, who is offline.
+[A] destroy the VicKitSystem.
+[B] Initializing System.
+[B] Authenticate User test04@thankyousoft.com
+[A] quit.
+[B] search user profile of A
+[B] wait until an invitation from A comes
+[DEBUG] Received Message Id : 1, Type : 1
+[ChatScenario2B::onInvite] called.
+[ChatScenario2B::onMatchForInvite] called.
+[B] check match peer and data
+[DEBUG] Received Message Id : 2, Type : 4
+[ChatScenario2B::onReceiveData] called. data : Hello
+Received message Hello
+[DEBUG] Done.[B] destroy the VicKitSystem.
+[B] quit.
+
