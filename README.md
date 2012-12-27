@@ -4,7 +4,7 @@ NLESP(Nano Latency Event Stream Processor)
 # Dual License
 ## NLESP Commercial License for OEMs, ISVs and VARs
  
-ThankyouSoft provides its NLESP server and NLESPClient Libraries under a dual license model designed to meet the development and distribution needs of both commercial distributors (such as OEMs, ISVs and VARs) and open source projects.
+ThankyouSoft provides its NLESP server and NLESP Client Libraries under a dual license model designed to meet the development and distribution needs of both commercial distributors (such as OEMs, ISVs and VARs) and open source projects.
  
 ## For OEMs, ISVs, VARs and Other Distributors of Commercial Applications
 
