@@ -15,6 +15,16 @@ private:
     unsigned int playerAttributes_;
     TxStringArray playersToInvite_;
 public:
+    VKMatchRequest()
+    {
+    	// TODO : make sure the "InBox" context ID of a user does not start with 0
+    	matchId_ = 0;
+    	minPlayers_ = 0;
+    	maxPlayers_ = 0;
+    	playerGroup_ = 0;
+    	playerAttributes_ = 0;
+    }
+    unsigned long long matchId() const { return matchId_; };
     unsigned int minPlayers() const { return minPlayers_; };            // Minimum number of players for the match
     unsigned int maxPlayers() const { return maxPlayers_; };            // Maximum number of players for the match
     unsigned int playerGroup() const { return playerGroup_; };          // The player group identifier. Matchmaking will only take place between players in the same group.

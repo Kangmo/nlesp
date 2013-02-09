@@ -614,14 +614,14 @@ uint32_t VicDataService_loadUserProfiles_args::read(::apache::thrift::protocol::
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->uids.clear();
-            uint32_t _size58;
-            ::apache::thrift::protocol::TType _etype61;
-            xfer += iprot->readListBegin(_etype61, _size58);
-            this->uids.resize(_size58);
-            uint32_t _i62;
-            for (_i62 = 0; _i62 < _size58; ++_i62)
+            uint32_t _size72;
+            ::apache::thrift::protocol::TType _etype75;
+            xfer += iprot->readListBegin(_etype75, _size72);
+            this->uids.resize(_size72);
+            uint32_t _i76;
+            for (_i76 = 0; _i76 < _size72; ++_i76)
             {
-              xfer += iprot->readString(this->uids[_i62]);
+              xfer += iprot->readString(this->uids[_i76]);
             }
             xfer += iprot->readListEnd();
           }
@@ -653,10 +653,10 @@ uint32_t VicDataService_loadUserProfiles_args::write(::apache::thrift::protocol:
   xfer += oprot->writeFieldBegin("uids", ::apache::thrift::protocol::T_LIST, 2);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->uids.size()));
-    std::vector<UID> ::const_iterator _iter63;
-    for (_iter63 = this->uids.begin(); _iter63 != this->uids.end(); ++_iter63)
+    std::vector<UID> ::const_iterator _iter77;
+    for (_iter77 = this->uids.begin(); _iter77 != this->uids.end(); ++_iter77)
     {
-      xfer += oprot->writeString((*_iter63));
+      xfer += oprot->writeString((*_iter77));
     }
     xfer += oprot->writeListEnd();
   }
@@ -678,10 +678,10 @@ uint32_t VicDataService_loadUserProfiles_pargs::write(::apache::thrift::protocol
   xfer += oprot->writeFieldBegin("uids", ::apache::thrift::protocol::T_LIST, 2);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>((*(this->uids)).size()));
-    std::vector<UID> ::const_iterator _iter64;
-    for (_iter64 = (*(this->uids)).begin(); _iter64 != (*(this->uids)).end(); ++_iter64)
+    std::vector<UID> ::const_iterator _iter78;
+    for (_iter78 = (*(this->uids)).begin(); _iter78 != (*(this->uids)).end(); ++_iter78)
     {
-      xfer += oprot->writeString((*_iter64));
+      xfer += oprot->writeString((*_iter78));
     }
     xfer += oprot->writeListEnd();
   }
@@ -1788,14 +1788,14 @@ uint32_t VicDataService_createContext_args::read(::apache::thrift::protocol::TPr
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->uids.clear();
-            uint32_t _size65;
-            ::apache::thrift::protocol::TType _etype68;
-            xfer += iprot->readListBegin(_etype68, _size65);
-            this->uids.resize(_size65);
-            uint32_t _i69;
-            for (_i69 = 0; _i69 < _size65; ++_i69)
+            uint32_t _size79;
+            ::apache::thrift::protocol::TType _etype82;
+            xfer += iprot->readListBegin(_etype82, _size79);
+            this->uids.resize(_size79);
+            uint32_t _i83;
+            for (_i83 = 0; _i83 < _size79; ++_i83)
             {
-              xfer += iprot->readString(this->uids[_i69]);
+              xfer += iprot->readString(this->uids[_i83]);
             }
             xfer += iprot->readListEnd();
           }
@@ -1827,10 +1827,10 @@ uint32_t VicDataService_createContext_args::write(::apache::thrift::protocol::TP
   xfer += oprot->writeFieldBegin("uids", ::apache::thrift::protocol::T_LIST, 2);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->uids.size()));
-    std::vector<UID> ::const_iterator _iter70;
-    for (_iter70 = this->uids.begin(); _iter70 != this->uids.end(); ++_iter70)
+    std::vector<UID> ::const_iterator _iter84;
+    for (_iter84 = this->uids.begin(); _iter84 != this->uids.end(); ++_iter84)
     {
-      xfer += oprot->writeString((*_iter70));
+      xfer += oprot->writeString((*_iter84));
     }
     xfer += oprot->writeListEnd();
   }
@@ -1852,10 +1852,10 @@ uint32_t VicDataService_createContext_pargs::write(::apache::thrift::protocol::T
   xfer += oprot->writeFieldBegin("uids", ::apache::thrift::protocol::T_LIST, 2);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>((*(this->uids)).size()));
-    std::vector<UID> ::const_iterator _iter71;
-    for (_iter71 = (*(this->uids)).begin(); _iter71 != (*(this->uids)).end(); ++_iter71)
+    std::vector<UID> ::const_iterator _iter85;
+    for (_iter85 = (*(this->uids)).begin(); _iter85 != (*(this->uids)).end(); ++_iter85)
     {
-      xfer += oprot->writeString((*_iter71));
+      xfer += oprot->writeString((*_iter85));
     }
     xfer += oprot->writeListEnd();
   }

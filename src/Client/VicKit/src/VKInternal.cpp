@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 
+#include "VKPorting.h"
+
 #include <VicKit/Basement.h>
 #include <VicKit/VKMatchmaker.h>
 
@@ -17,6 +19,8 @@
 #include <concurrency/BoostThreadFactory.h>
 #include <transport/TSocket.h>
 #include <transport/TBufferTransports.h>
+
+
 using namespace apache::thrift::transport;
 using namespace apache::thrift::concurrency;
 using namespace apache::thrift::transport;
@@ -157,7 +161,7 @@ const VicKit::MessageID VKInternal::pullMessages(VicKit::MessageID startMessageI
 			VicKit::ContextMessage & contextMessage = response.messageList[i];
 
 			VicKit::MessageType::type messageType = contextMessage.messageContent.messageType;
-			printf("[DEBUG] Received Message Id : %ld, Type : %d\n", contextMessage.messageID, (int)messageType );
+//			printf("[DEBUG] Received Message Id : %lld, Type : %d\n", contextMessage.messageID, (int)messageType );
 
 			switch( messageType )
 			{
@@ -173,12 +177,12 @@ const VicKit::MessageID VKInternal::pullMessages(VicKit::MessageID startMessageI
 				}
 				break;
 				default :
-					printf("Unknown Message Type : %d\n", (int)messageType );
+//					printf("Unknown Message Type : %d\n", (int)messageType );
 				break;
 			}
 		}
 
-		printf("[DEBUG] Done." );
+//		printf("[DEBUG] Done." );
 
 		return response.maxMessageID;
 	}
@@ -190,35 +194,121 @@ const VicKit::MessageID VKInternal::pullMessages(VicKit::MessageID startMessageI
 
 static inline const char * internalDataFileName()
 {
+#if defined(PLATFORM_IOS)
+    // iOS only
+    NSString *docsDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *fileName = [NSString stringWithUTF8String:((VKInternal::instanceName() + ".dat").c_str())];
+    NSString *path = [docsDir stringByAppendingPathComponent:fileName];
+    return path.UTF8String;
+#else // Linux
 	return (VKInternal::instanceName() + ".dat").c_str();
+#endif
 }
 
 // return -1 if the file is not found.
 static VicKit::MessageID readMaxMessageId()
 {
+    // commented by MKJANG
+    /*
 	VicKit::MessageID maxMessageId = -1;
     std::ifstream ifs(internalDataFileName(), std::ios::binary );
     if (ifs.eof())
+    {
+//        printf("readMaxMessageId ifs.eof ");
     	return -1;
+    }
 
     ifs >> maxMessageId;
 
-    if (ifs.fail() || ifs.bad() )
-    	maxMessageId = -1;
+    if (ifs.fail())
+    {
+//        printf("readMaxMessageId ifs.fail");
+        return -1;
+    }
+    if (ifs.bad() )
+    {
+//        printf("readMaxMessageId ifs.bad");
+    	return -1;
+    }
 
+    return maxMessageId;
+     */
+    
+    VicKit::MessageID maxMessageId = -1;
+    
+    // open file
+    FILE *pFile = fopen(internalDataFileName(), "r");
+    if (pFile == NULL)
+    {
+//        printf("file error");
+        return -1;
+    }
+    
+    // obtain file size
+    fseek(pFile, 0, SEEK_END);
+    long lSize = ftell(pFile);
+    rewind(pFile);
+    
+    // allocate memory to contain the whole file
+    char * buffer = (char *)malloc(sizeof(char)*lSize);
+    if (buffer == NULL)
+    {
+//        printf("memory error");
+        return -1;
+    }
+    
+    // copy the file into the buffer
+    size_t result = fread(buffer, 1, lSize, pFile);
+    if (result != lSize)
+    {
+//        printf("reading error");
+        return -1;
+    }
+    
+    sscanf(buffer, "%lld", &maxMessageId);
+    
+//    maxMessageId = (VicKit::MessageID)buffer;
+//    printf("buffer: %s\n", buffer);
+//    printf("maxmessageid: %lld\n", maxMessageId);
+    
+    fclose(pFile);
+    free(buffer);
+    
     return maxMessageId;
 }
 
 static void writeMaxMessageId(VicKit::MessageID messageId)
 {
+    // commented by MKJANG
+    /*
     std::ofstream ofs(internalDataFileName(), std::ios::binary );
     ofs << messageId;
+    ofs.close();
+     */
+    
+    // open file
+    FILE *pFile = fopen(internalDataFileName(), "wb");
+//    printf("writeMaxMessageId: internalDataFileName: %s", internalDataFileName());
+    if (pFile == NULL)
+    {
+//        printf("writeMaxMessageId: file error");
+        return;
+    }
+
+    char buffer[1024];
+    sprintf(buffer, "%lld", messageId);
+//    printf("buffer: %s", buffer);
+    
+    fwrite(buffer, 1, sizeof(buffer), pFile);
+    fclose(pFile);
+    
 }
 
 void VKInternal::PullMessagesThreadFunc() {
 
 	// The maximum message id of the latest message that we pulled from the server.
 	VicKit::MessageID messageId = readMaxMessageId();
+//    printf("Max Message ID: %lld\n", messageId);
 	// If MaxMessageId was not written before,
 	while( ! stopThread_ )
 	{
@@ -238,12 +328,15 @@ void VKInternal::PullMessagesThreadFunc() {
 			// sleep only if we didn't get any new message from server.
 			// don't sleep if we are receiving any new message from server.
 			boost::this_thread::sleep(boost::posix_time::milliseconds(PULL_THREAD_SLEEP_MS));
+            //printf("sleep newmessageid: %lld\n", newMessageId);
+
 		}
 		else
 		{
 			// store the new timestamp persistently.
 			// BUGBUG : Optimize : This may make the battery to run out quickly. Consider storing the timestamp less frequently.
 			messageId = newMessageId + 1;
+//            printf("before writemaxmessageid: %lld \n", messageId);
 			writeMaxMessageId(messageId);
 		}
 	}

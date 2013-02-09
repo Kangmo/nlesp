@@ -43,6 +43,10 @@ public :
 		else
 		{
 			VKMatchImpl * matchImpl = VKMatchImpl::createMatch(response.createdContextId, playerUIDs_);
+			VK_ASSERT(matchImpl);
+
+			bool success = VKMatchImpl::serializeMatchMappings();
+			VK_ASSERT(success);
 
 			handler_->onFindMatch( matchImpl, NULL );
 		}
@@ -59,15 +63,36 @@ void VKMatchmaker::findMatch(const VKMatchRequest & request, FindMatchHandler * 
 
 	VicKit::UserProfile req;
 
-    boost::shared_ptr<RequestingTask< std::vector<VicKit::UID> , VicKit::ResCreateContext> > requestingTask(
-        new RequestingTask< std::vector<VicKit::UID>, VicKit::ResCreateContext>
-        (  &VicKit::VicDataServiceClient::createContext,
-      	   VKInternal::authSignature(),
-      	   request.playersToInvite(),
-           internalHandler)
-    );
+	if ( request.matchId() > 0L )
+	{
+        printf("VKMatchmaker::findMatch: match id > 0\n");
+		// In case matchId is set in the VKMatchRequest object, just return the match object cached on the client side.
+		VKMatchImpl * matchImpl = VKMatchImpl::getMatch(request.matchId());
+		if(matchImpl != NULL)
+		{
+            printf("VKMatchmaker::findMatch: matchImpl != NULL\n");
+			handler->onFindMatch(matchImpl, NULL);
+			return;
+		}
+		else
+		{
+			// The match is not cached on the client side.
+			// BUGBUG : Implement location based contexts, whose context ID are sent from client to server.
+			// The server creates a location based context with the given context ID, and return the context ID.
+		}
+	}
 
-    theAsyncRequester.Request(requestingTask);
+    printf("VKMatchmaker::findMatch: request to server\n");
+    
+	boost::shared_ptr<RequestingTask< std::vector<VicKit::UID> , VicKit::ResCreateContext> > requestingTask(
+		new RequestingTask< std::vector<VicKit::UID>, VicKit::ResCreateContext>
+		(  &VicKit::VicDataServiceClient::createContext,
+		   VKInternal::authSignature(),
+		   request.playersToInvite(),
+		   internalHandler)
+	);
+
+	theAsyncRequester.Request(requestingTask);
 }
 
 //------------------------------------------------------------------------------------
@@ -77,6 +102,9 @@ void VKMatchmaker::matchForInvite(VKInvite* invite, MatchForInviteHandler * hand
 {
 	VKMatch * match = VKMatchImpl::createMatch(invite->matchId(), invite->playersToInvite() );
 	VK_ASSERT(match);
+
+	bool success = VKMatchImpl::serializeMatchMappings();
+	VK_ASSERT(success);
 
 	// BUGBUG : Show an error instead of the assertion.
 	VK_ASSERT(handler);

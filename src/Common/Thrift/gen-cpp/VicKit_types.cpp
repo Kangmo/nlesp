@@ -2864,4 +2864,172 @@ void swap(ResLoadFollowerUIDs &a, ResLoadFollowerUIDs &b) {
   swap(a.__isset, b.__isset);
 }
 
+const char* ClientContextData::ascii_fingerprint = "ACE4F644F0FDD289DDC4EE5B83BC13C0";
+const uint8_t ClientContextData::binary_fingerprint[16] = {0xAC,0xE4,0xF6,0x44,0xF0,0xFD,0xD2,0x89,0xDD,0xC4,0xEE,0x5B,0x83,0xBC,0x13,0xC0};
+
+uint32_t ClientContextData::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->playerUIDs.clear();
+            uint32_t _size58;
+            ::apache::thrift::protocol::TType _etype61;
+            xfer += iprot->readListBegin(_etype61, _size58);
+            this->playerUIDs.resize(_size58);
+            uint32_t _i62;
+            for (_i62 = 0; _i62 < _size58; ++_i62)
+            {
+              xfer += iprot->readString(this->playerUIDs[_i62]);
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.playerUIDs = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ClientContextData::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  xfer += oprot->writeStructBegin("ClientContextData");
+
+  xfer += oprot->writeFieldBegin("playerUIDs", ::apache::thrift::protocol::T_LIST, 1);
+  {
+    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->playerUIDs.size()));
+    std::vector<UID> ::const_iterator _iter63;
+    for (_iter63 = this->playerUIDs.begin(); _iter63 != this->playerUIDs.end(); ++_iter63)
+    {
+      xfer += oprot->writeString((*_iter63));
+    }
+    xfer += oprot->writeListEnd();
+  }
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ClientContextData &a, ClientContextData &b) {
+  using ::std::swap;
+  swap(a.playerUIDs, b.playerUIDs);
+  swap(a.__isset, b.__isset);
+}
+
+const char* ClientContextMap::ascii_fingerprint = "8C7B95C09551DEE89D2B008CAC3C6084";
+const uint8_t ClientContextMap::binary_fingerprint[16] = {0x8C,0x7B,0x95,0xC0,0x95,0x51,0xDE,0xE8,0x9D,0x2B,0x00,0x8C,0xAC,0x3C,0x60,0x84};
+
+uint32_t ClientContextMap::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_MAP) {
+          {
+            this->contextMap.clear();
+            uint32_t _size64;
+            ::apache::thrift::protocol::TType _ktype65;
+            ::apache::thrift::protocol::TType _vtype66;
+            xfer += iprot->readMapBegin(_ktype65, _vtype66, _size64);
+            uint32_t _i68;
+            for (_i68 = 0; _i68 < _size64; ++_i68)
+            {
+              ContextID _key69;
+              xfer += iprot->readI64(_key69);
+              ClientContextData& _val70 = this->contextMap[_key69];
+              xfer += _val70.read(iprot);
+            }
+            xfer += iprot->readMapEnd();
+          }
+          this->__isset.contextMap = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ClientContextMap::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  xfer += oprot->writeStructBegin("ClientContextMap");
+
+  xfer += oprot->writeFieldBegin("contextMap", ::apache::thrift::protocol::T_MAP, 1);
+  {
+    xfer += oprot->writeMapBegin(::apache::thrift::protocol::T_I64, ::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->contextMap.size()));
+    std::map<ContextID, ClientContextData> ::const_iterator _iter71;
+    for (_iter71 = this->contextMap.begin(); _iter71 != this->contextMap.end(); ++_iter71)
+    {
+      xfer += oprot->writeI64(_iter71->first);
+      xfer += _iter71->second.write(oprot);
+    }
+    xfer += oprot->writeMapEnd();
+  }
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ClientContextMap &a, ClientContextMap &b) {
+  using ::std::swap;
+  swap(a.contextMap, b.contextMap);
+  swap(a.__isset, b.__isset);
+}
+
 } // namespace

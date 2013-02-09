@@ -4378,13 +4378,13 @@ public class VicDataService {
             case 2: // UIDS
               if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
                 {
-                  org.apache.thrift.protocol.TList _list72 = iprot.readListBegin();
-                  struct.uids = new ArrayList<String>(_list72.size);
-                  for (int _i73 = 0; _i73 < _list72.size; ++_i73)
+                  org.apache.thrift.protocol.TList _list90 = iprot.readListBegin();
+                  struct.uids = new ArrayList<String>(_list90.size);
+                  for (int _i91 = 0; _i91 < _list90.size; ++_i91)
                   {
-                    String _elem74; // required
-                    _elem74 = iprot.readString();
-                    struct.uids.add(_elem74);
+                    String _elem92; // required
+                    _elem92 = iprot.readString();
+                    struct.uids.add(_elem92);
                   }
                   iprot.readListEnd();
                 }
@@ -4417,9 +4417,9 @@ public class VicDataService {
           oprot.writeFieldBegin(UIDS_FIELD_DESC);
           {
             oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, struct.uids.size()));
-            for (String _iter75 : struct.uids)
+            for (String _iter93 : struct.uids)
             {
-              oprot.writeString(_iter75);
+              oprot.writeString(_iter93);
             }
             oprot.writeListEnd();
           }
@@ -4456,9 +4456,9 @@ public class VicDataService {
         if (struct.isSetUids()) {
           {
             oprot.writeI32(struct.uids.size());
-            for (String _iter76 : struct.uids)
+            for (String _iter94 : struct.uids)
             {
-              oprot.writeString(_iter76);
+              oprot.writeString(_iter94);
             }
           }
         }
@@ -4475,13 +4475,13 @@ public class VicDataService {
         }
         if (incoming.get(1)) {
           {
-            org.apache.thrift.protocol.TList _list77 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-            struct.uids = new ArrayList<String>(_list77.size);
-            for (int _i78 = 0; _i78 < _list77.size; ++_i78)
+            org.apache.thrift.protocol.TList _list95 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+            struct.uids = new ArrayList<String>(_list95.size);
+            for (int _i96 = 0; _i96 < _list95.size; ++_i96)
             {
-              String _elem79; // required
-              _elem79 = iprot.readString();
-              struct.uids.add(_elem79);
+              String _elem97; // required
+              _elem97 = iprot.readString();
+              struct.uids.add(_elem97);
             }
           }
           struct.setUidsIsSet(true);
@@ -9338,13 +9338,13 @@ public class VicDataService {
             case 2: // UIDS
               if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
                 {
-                  org.apache.thrift.protocol.TList _list80 = iprot.readListBegin();
-                  struct.uids = new ArrayList<String>(_list80.size);
-                  for (int _i81 = 0; _i81 < _list80.size; ++_i81)
+                  org.apache.thrift.protocol.TList _list98 = iprot.readListBegin();
+                  struct.uids = new ArrayList<String>(_list98.size);
+                  for (int _i99 = 0; _i99 < _list98.size; ++_i99)
                   {
-                    String _elem82; // required
-                    _elem82 = iprot.readString();
-                    struct.uids.add(_elem82);
+                    String _elem100; // required
+                    _elem100 = iprot.readString();
+                    struct.uids.add(_elem100);
                   }
                   iprot.readListEnd();
                 }
@@ -9377,9 +9377,9 @@ public class VicDataService {
           oprot.writeFieldBegin(UIDS_FIELD_DESC);
           {
             oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, struct.uids.size()));
-            for (String _iter83 : struct.uids)
+            for (String _iter101 : struct.uids)
             {
-              oprot.writeString(_iter83);
+              oprot.writeString(_iter101);
             }
             oprot.writeListEnd();
           }
@@ -9416,9 +9416,9 @@ public class VicDataService {
         if (struct.isSetUids()) {
           {
             oprot.writeI32(struct.uids.size());
-            for (String _iter84 : struct.uids)
+            for (String _iter102 : struct.uids)
             {
-              oprot.writeString(_iter84);
+              oprot.writeString(_iter102);
             }
           }
         }
@@ -9435,13 +9435,13 @@ public class VicDataService {
         }
         if (incoming.get(1)) {
           {
-            org.apache.thrift.protocol.TList _list85 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-            struct.uids = new ArrayList<String>(_list85.size);
-            for (int _i86 = 0; _i86 < _list85.size; ++_i86)
+            org.apache.thrift.protocol.TList _list103 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+            struct.uids = new ArrayList<String>(_list103.size);
+            for (int _i104 = 0; _i104 < _list103.size; ++_i104)
             {
-              String _elem87; // required
-              _elem87 = iprot.readString();
-              struct.uids.add(_elem87);
+              String _elem105; // required
+              _elem105 = iprot.readString();
+              struct.uids.add(_elem105);
             }
           }
           struct.setUidsIsSet(true);

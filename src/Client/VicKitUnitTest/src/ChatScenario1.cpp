@@ -32,6 +32,25 @@ void ChatScenario1A::run() {
 	printf("[A] wait for invitation from B\n");
 	while (match_ == NULL);
 
+	printf("[A] finding match with given match id...");
+	// Test if findMatch with matchId works well.
+	{
+		unsigned long long originalMatchId = match_->matchId();
+
+		VKMatchRequest matchRequest;
+		matchRequest.matchId(originalMatchId);
+		match_ = NULL;
+
+		matchmaker->findMatch(matchRequest, this);
+
+		ASSERT_TRUE( waitUntilFinished() == PASSED );
+		while (match_ == NULL);
+
+		// The found match should have the same match id
+		ASSERT_TRUE(match_->matchId() == originalMatchId);
+	}
+	printf("OK.\n");
+
 	// B: create(find) a match with A.
 	// B: send a message to A.
 	// B: wait for a reply message from A.
@@ -118,6 +137,25 @@ void ChatScenario1A::onInvite(VKInvite * acceptedInvite,
 	pass();
 }
 
+void ChatScenario1A::onFindMatch(VKMatch * match, VKError * error)
+{
+	if (error != NULL) {
+		fail(error->errorCode(), error->errorMessage());
+		return;
+	}
+
+	ASSERT_TRUE(match->matchId() > 0);
+	printf("[ChatScenario1B::onFindMatch] called. matchId = %ld\n", match->matchId());
+
+	match->delegate(this);
+
+
+	ChatScenario1A::match_ = match;
+
+	pass();
+}
+
+
 void ChatScenario1A::onMatchForInvite(VKMatch * match, VKError * error)
 {
 	if (error != NULL) {
@@ -195,6 +233,25 @@ void ChatScenario1B::run() {
 	// Wait for match object created on onFindMatch
 	while (match_==NULL);
 
+	// Test if findMatch with matchId works well.
+	printf("[B] finding match with given match id...");
+	{
+		unsigned long long originalMatchId = match_->matchId();
+
+		VKMatchRequest matchRequest;
+		matchRequest.matchId(originalMatchId);
+		match_ = NULL;
+
+		matchmaker->findMatch(matchRequest, this);
+
+		ASSERT_TRUE( waitUntilFinished() == PASSED );
+		while (match_ == NULL);
+
+		// The found match should have the same match id
+		ASSERT_TRUE(match_->matchId() == originalMatchId);
+	}
+	printf("OK.\n");
+
 	// B: wait for establishing.
 	// kmkim : expectedPlayerCount not implemented yet.
 	//while (match->expectedPlayerCount() != 0);
@@ -263,8 +320,8 @@ void ChatScenario1B::onFindMatch(VKMatch * match, VKError * error)
 		return;
 	}
 
-	ASSERT_TRUE(match->getMatchId() > 0);
-	printf("[ChatScenario1B::onFindMatch] called. matchId = %ld\n", match->getMatchId());
+	ASSERT_TRUE(match->matchId() > 0);
+	printf("[ChatScenario1B::onFindMatch] called. matchId = %ld\n", match->matchId());
 
 	match->delegate(this);
 

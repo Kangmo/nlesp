@@ -105,8 +105,8 @@ void ChatScenario2A::onFindMatch(VKMatch * match, VKError * error)
 		return;
 	}
 
-	ASSERT_TRUE(match->getMatchId() > 0);
-	printf("[ChatScenario2A::onFindMatch] called. matchId = %ld\n", match->getMatchId());
+	ASSERT_TRUE(match->matchId() > 0);
+	printf("[ChatScenario2A::onFindMatch] called. matchId = %ld\n", match->matchId());
 
 	// We don't receive any message. No need to set delegate of match_ here.
 

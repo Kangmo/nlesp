@@ -41,7 +41,7 @@ public :
 	VKMatchDelegate * delegate() { return delegate_; };
 	void delegate( VKMatchDelegate * arg ) { delegate_ = arg; };
 	unsigned int expectedPlayerCount() const { return expectedPlayerCount_; };
-	unsigned long long getMatchId() const {
+	unsigned long long matchId() const {
 		return matchId_;
 	}
 

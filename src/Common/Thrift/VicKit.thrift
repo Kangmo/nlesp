@@ -283,6 +283,18 @@ struct ResLoadFollowerUIDs
    2: list<UID>     followerUIDs
 }
 
+// The fields to store for each context when a context is serialized on the client side.
+struct ClientContextData
+{
+   1: list<UID> playerUIDs
+}
+
+// The mapping from ContextID to ClientContextData to serialize on the client side.
+struct ClientContextMap
+{
+   1: map<ContextID, ClientContextData> contextMap
+}
+
 service VicDataService {
    /*
       For all requests except authenticateUser, we need to pass the AuthSignature returned by a successful call of authenticateUser as the first argument. 

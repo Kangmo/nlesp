@@ -1821,6 +1821,92 @@ class ResLoadFollowerUIDs {
 
 void swap(ResLoadFollowerUIDs &a, ResLoadFollowerUIDs &b);
 
+typedef struct _ClientContextData__isset {
+  _ClientContextData__isset() : playerUIDs(false) {}
+  bool playerUIDs;
+} _ClientContextData__isset;
+
+class ClientContextData {
+ public:
+
+  static const char* ascii_fingerprint; // = "ACE4F644F0FDD289DDC4EE5B83BC13C0";
+  static const uint8_t binary_fingerprint[16]; // = {0xAC,0xE4,0xF6,0x44,0xF0,0xFD,0xD2,0x89,0xDD,0xC4,0xEE,0x5B,0x83,0xBC,0x13,0xC0};
+
+  ClientContextData() {
+  }
+
+  virtual ~ClientContextData() throw() {}
+
+  std::vector<UID>  playerUIDs;
+
+  _ClientContextData__isset __isset;
+
+  void __set_playerUIDs(const std::vector<UID> & val) {
+    playerUIDs = val;
+  }
+
+  bool operator == (const ClientContextData & rhs) const
+  {
+    if (!(playerUIDs == rhs.playerUIDs))
+      return false;
+    return true;
+  }
+  bool operator != (const ClientContextData &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ClientContextData & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+void swap(ClientContextData &a, ClientContextData &b);
+
+typedef struct _ClientContextMap__isset {
+  _ClientContextMap__isset() : contextMap(false) {}
+  bool contextMap;
+} _ClientContextMap__isset;
+
+class ClientContextMap {
+ public:
+
+  static const char* ascii_fingerprint; // = "8C7B95C09551DEE89D2B008CAC3C6084";
+  static const uint8_t binary_fingerprint[16]; // = {0x8C,0x7B,0x95,0xC0,0x95,0x51,0xDE,0xE8,0x9D,0x2B,0x00,0x8C,0xAC,0x3C,0x60,0x84};
+
+  ClientContextMap() {
+  }
+
+  virtual ~ClientContextMap() throw() {}
+
+  std::map<ContextID, ClientContextData>  contextMap;
+
+  _ClientContextMap__isset __isset;
+
+  void __set_contextMap(const std::map<ContextID, ClientContextData> & val) {
+    contextMap = val;
+  }
+
+  bool operator == (const ClientContextMap & rhs) const
+  {
+    if (!(contextMap == rhs.contextMap))
+      return false;
+    return true;
+  }
+  bool operator != (const ClientContextMap &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ClientContextMap & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+void swap(ClientContextMap &a, ClientContextMap &b);
+
 } // namespace
 
 #endif

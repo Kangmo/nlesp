@@ -73,7 +73,6 @@ private:
 };
 
 // send pullData request to the server every 1 second
-// BUGBUG : temporarily changing the interval for debugging
 #define PULL_THREAD_SLEEP_MS (1000)
 
 // When the user is not authenticated yet,sleep this amount of ms to recheck if the user was authenticated.

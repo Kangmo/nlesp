@@ -159,7 +159,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.365571489" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.739564896" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
 								<option id="gnu.cpp.link.option.paths.677890758" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${WorkspaceDirPath}/../../external/gtest-1.6.0/lib/.libs&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${WorkspaceDirPath}/../../external/gtest-1.6.0/lib/.linuxlibs&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/VicKit/LinuxDebug}&quot;"/>
 								</option>
 								<option id="gnu.cpp.link.option.libs.134596431" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
@@ -168,7 +168,7 @@
 									<listOptionValue builtIn="false" value=":libthriftz.a"/>
 									<listOptionValue builtIn="false" value="boost_thread"/>
 									<listOptionValue builtIn="false" value="pthread"/>
-									<listOptionValue builtIn="false" value="gtest"/>
+									<listOptionValue builtIn="false" value=":libgtest.a"/>
 									<listOptionValue builtIn="false" value="rt"/>
 								</option>
 								<option id="gnu.cpp.link.option.flags.457704412" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="" valueType="string"/>
@@ -211,13 +211,8 @@
 		</scannerConfigBuildInfo>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="refreshScope" versionNumber="2">
-		<configuration configurationName="Release">
-			<resource resourceType="PROJECT" workspacePath="/VicKitUnitTest"/>
-		</configuration>
-		<configuration configurationName="Debug">
-			<resource resourceType="PROJECT" workspacePath="/VicKitUnitTest"/>
-		</configuration>
+	<storageModule moduleId="refreshScope" versionNumber="1">
+		<resource resourceType="PROJECT" workspacePath="/VicKitUnitTest"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>

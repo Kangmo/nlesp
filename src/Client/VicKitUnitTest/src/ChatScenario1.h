@@ -18,6 +18,7 @@ class ChatScenario1A :
 		public VKLocalPlayer::AuthenticateHandler,
 		public VKLocalPlayer::SearchUserHandler,
 		public VKMatchmaker::InviteHandler,
+		public VKMatchmaker::FindMatchHandler,
 		public VKMatchDelegate,
 		public VKMatchmaker::MatchForInviteHandler
 {
@@ -28,6 +29,7 @@ public:
 	virtual void onAuthenticate(VKError * error);
     virtual void onSearchUser(const std::vector<VKLocalPlayer::TxUserProfile> & userProfiles, VKError * error);
 	virtual void onInvite(VKInvite * acceptedInvite, TxStringArray * playersToInvite);
+	virtual void onFindMatch(VKMatch * match, VKError * error);
 
 	virtual void onReceiveData(VKMatch * match, const TxData & data, const TxString & playerID);
 	virtual void onMatchForInvite(VKMatch * match, VKError * error);

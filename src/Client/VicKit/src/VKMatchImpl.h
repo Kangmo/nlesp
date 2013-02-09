@@ -17,10 +17,6 @@ public :
 
 	virtual ~VKMatchImpl() {};
 
-	inline VicKit::ContextID getContextID() {
-		return matchId_;
-	}
-
 	// Asynchronously send data to one or more players. Returns YES if delivery started, NO if unable to start sending and error will be set.
 	virtual bool sendData( const TxData & data, const TxStringArray & playerIDs, VKMatchSendDataMode dataMode, VKError ** error);
 
@@ -32,7 +28,12 @@ public :
 
 	static VKMatchImpl * createMatch(VicKit::ContextID cid, const std::vector<std::string> & playerUIDs );
 	static VKMatchImpl * getMatch(VicKit::ContextID cid );
+
+	static bool serializeMatchMappings();
+	static bool deserializeMatchMappings();
+
 private :
+	static void clearAllMatches();
 };
 
 #endif /* __O_VK_MATCHIMPl_H__ */
