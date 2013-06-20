@@ -14,7 +14,7 @@ Thrift defines the protocol between client and server. REST service server runs 
 # Key Features
 ## Sign Up ( supports user picture ).
 ## Sign In.
-## Find friend by email address.
+## Find a friend by email address.
 ## Add a friend. 
 ## Create a group of users.
 ## Send message to a group of users.
