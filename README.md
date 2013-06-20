@@ -1,20 +1,41 @@
 NLESP(Nano Latency Event Stream Processor)
 =====
+# Value Proposition
+NLESP is a full stack consolidated server S/W for your SNS, chatting, and multiplay game apps.
+Get your app service server up and running within a week. Focus on your client side development and win your competitor.
+
+# Architecture
+It is composed of a server backend, C++ client SDK, and REST API similar to Twitter.
+It uses HBase to support your service that will fly to the sky with exponentialy growing number of users in near future.
+Thrift defines the protocol between client and server. REST service server runs on Tomcat.
+
+# Key Features
+## Sign Up ( supports user picture ).
+## Sign In.
+## Find friend by email address.
+## Add a friend. 
+## Create a group of users.
+## Send message to a group of users.
+ 
+# TODO
+## OAuth, Single sign on
+## Leaderboards
+## Achievements
 
 # Dual License
-## NLESP Commercial License for OEMs, ISVs and VARs
+## NLESP Commercial License for OEMs, ISVs, VARs and SPs
  
-Nanolat provides its NLESP server and NLESP Client Libraries under a dual license model designed to meet the development and distribution needs of both commercial distributors (such as OEMs, ISVs and VARs) and open source projects.
+Nanolat provides its NLESP server and NLESP Client Libraries under a dual license model designed to meet the development and distribution needs of both commercial distributors or service providers (such as OEMs, ISVs, VARs, and SPs) and open source projects.
  
-## For OEMs, ISVs, VARs and Other Distributors of Commercial Applications
+## For OEMs, ISVs, VARs and Other Distributors of Commercial Applications and SPs
 
 OEMs (Original Equipment Manufacturers), ISVs (Independent Software Vendors), VARs (Value Added Resellers)  and other distributors that combine and distribute commercially licensed software with NLESP software but do not wish to distribute the source code for the commercially licensed software under version 3 of the GNU Affero General Public License (the "AGPL") must enter into a commercial license agreement with Nanolat.
 SPs (Service Providers) also need to enter into a commercial license agreement with Nanolat otherwise they are under the AGPL v3.
 
 The commercial license is similar to LGPL, restricting the range of source code to open to NLESP itself.
 
-For start-up companies Nanolat provides commercial license and technical support at small percentage of equity share. 
-Focus on your client side work and grow your business quicker by using NLESP. 
+For start-up companies, Nanolat provides commercial license and technical support at small percentage of equity share. 
+Focus on your client side development and grow your business quicker by using NLESP. 
 Send an email to support@nanolat.com for the details.
 
 ## For Open Source Projects and Other Developers of Open Source Applications
