@@ -18,7 +18,7 @@ Thrift defines the protocol between client and server. REST service server runs 
 ## Add a friend. 
 ## Create a group of users.
 ## Send a message to a specific user.
-## Send message to a group of users.
+## Send a message to a group of users.
  
 # TODO
 ## OAuth, Single sign on
