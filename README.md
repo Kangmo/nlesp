@@ -13,6 +13,10 @@ SPs (Service Providers) also need to enter into a commercial license agreement w
 
 The commercial license is similar to LGPL, restricting the range of source code to open to NLESP itself.
 
+For start-up companies Nanolat provides commercial license and technical support at small percentage of equity share. 
+Focus on your client side work and grow your business quicker by using NLESP. 
+Send an email to support@nanolat.com for the details.
+
 ## For Open Source Projects and Other Developers of Open Source Applications
  
 For developers of Free Open Source Software ("FOSS") applications under the GPL v3 or AGPL v3 that want to combine and distribute those FOSS applications with NLESP software, Nanolat’s NLESP open source software licensed under the AGPL v3 is the best option.
