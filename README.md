@@ -17,12 +17,14 @@ Thrift defines the protocol between client and server. REST service server runs 
 ## Find a friend by email address.
 ## Add a friend. 
 ## Create a group of users.
+## Send a message to a specific user.
 ## Send message to a group of users.
  
 # TODO
 ## OAuth, Single sign on
 ## Leaderboards
 ## Achievements
+## Push notification
 
 # Dual License
 ## NLESP Commercial License for OEMs, ISVs, VARs and SPs
