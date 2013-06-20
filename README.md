@@ -2,11 +2,13 @@ NLESP(Nano Latency Event Stream Processor)
 =====
 # Value Proposition
 NLESP is a full stack consolidated server S/W for your SNS, chatting, and multiplay game apps.
-Get your app service server up and running within a week. Focus on your client side development and win your competitor.
+Get your app service server up and running within a week. 
+Run your app service server anywhere you want. In servers in your company? OK! In VMs in Amazon EC2? OK!
+Focus on your client side development and win your competitor.
 
 # Architecture
-It is composed of a server backend, C++ client SDK, and REST API similar to Twitter.
-It uses HBase to support your service that will fly to the sky with exponentialy growing number of users in near future.
+It is composed of a server backend written in Java, and C++ client SDK, and REST API similar to Twitter.
+The server backend uses HBase to support your service that will fly to the sky with exponentialy growing number of users in near future.
 Thrift defines the protocol between client and server. REST service server runs on Tomcat.
 
 # Key Features
