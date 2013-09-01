@@ -45,3 +45,7 @@ Send an email to support@nanolat.com for the details.
 ## For Open Source Projects and Other Developers of Open Source Applications
  
 For developers of Free Open Source Software ("FOSS") applications under the GPL v3 or AGPL v3 that want to combine and distribute those FOSS applications with NLESP software, Nanolat’s NLESP open source software licensed under the AGPL v3 is the best option.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Kangmo/nlesp/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
